@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard GT Química - Flexibilização do LOD</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#1b4a6b',   // Azul/Petróleo Escuro
+                            orange: '#f06c22', // Laranja GT Química
+                            teal: '#16a34a',   // Verde/Teal GT Technology
+                            lightbg: '#f4f7f9',
+                            cardbg: '#ffffff'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #f4f7f9; }
+        .card { transition: all 0.3s ease; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+    </style>
+</head>
+<body class="font-sans text-slate-700 antialiased min-h-screen flex flex-col">
+
+    <!-- HEADER CORPORATIVO GT -->
+    <header class="bg-brand-dark text-white shadow-lg relative border-b-4 border-brand-orange">
+        <!-- Textura de fundo (plataforma/fábrica) -->
+        <div class="absolute right-0 top-0 opacity-5 pointer-events-none">
+            <i class="fa-solid fa-industry" style="font-size: 15rem; margin-top: -3rem; margin-right: -2rem;"></i>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 py-4 relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
+            
+            <!-- Logo Oficial GT Química (Imagem Local) -->
+            <div class="flex items-center gap-5 md:border-r border-white/20 pr-6">
+                <!-- Certifique-se de que a imagem 'logo_gt.png' está na mesma pasta deste arquivo HTML -->
+                <img src="logo_gt.png" alt="GT Química Soluções Offshore" class="h-16 md:h-20 object-contain">
+            </div>
+
+            <!-- Título do Dashboard -->
+            <div class="flex-grow text-center md:text-left">
+                <h1 class="text-xl md:text-2xl font-bold">Painel de Otimização Operacional (ERACHECK)</h1>
+                <p class="text-white/80 mt-1 text-xs font-bold tracking-widest uppercase">Flexibilização de Metas LOD | Jan-Ago 2026</p>
+            </div>
+
+            <!-- Selo de Status -->
+            <div class="flex items-center bg-white/10 border border-white/20 px-4 py-2 rounded-full shadow-sm backdrop-blur-sm">
+                <span class="relative flex h-3 w-3 mr-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                </span>
+                <span class="text-white font-bold uppercase tracking-wider text-sm">Status: Aprovado</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-8">
+
+        <!-- SECTION 1: PASSIVO OPERACIONAL & GRÁFICO -->
+        <section>
+            <div class="mb-4 border-b-2 border-slate-200 pb-2 flex items-center justify-between">
+                <h2 class="text-xl font-bold text-brand-dark uppercase">Passivo Operacional <span class="text-sm font-normal text-slate-500 normal-case ml-2">(Cenário Antigo - Meta 0,700 mg/L)</span></h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Left: 3 KPI Cards -->
+                <div class="lg:col-span-4 flex flex-col gap-4">
+                    <div class="card bg-brand-cardbg rounded-xl border-l-4 border-slate-400 p-5 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Retestes de Enquadramento</p>
+                            <h3 class="text-3xl font-black text-slate-700">522 <span class="text-sm font-medium text-slate-500">Testes</span></h3>
+                        </div>
+                        <div class="h-12 w-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-xl">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+                    </div>
+                    <div class="card bg-brand-cardbg rounded-xl border-l-4 border-slate-400 p-5 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Tempo Operacional Perdido</p>
+                            <h3 class="text-3xl font-black text-slate-700">174 <span class="text-sm font-medium text-slate-500">Horas</span></h3>
+                        </div>
+                        <div class="h-12 w-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-xl">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="card bg-brand-cardbg rounded-xl border-l-4 border-slate-400 p-5 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Custo com Ciclohexano</p>
+                            <h3 class="text-3xl font-black text-slate-700">R$ 5.978<span class="text-xl">,44</span></h3>
+                        </div>
+                        <div class="h-12 w-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-xl">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Chart.js Bar Chart -->
+                <div class="lg:col-span-8 bg-brand-cardbg rounded-xl shadow-sm border border-slate-200 p-5">
+                    <h3 class="text-sm font-bold text-brand-dark uppercase mb-4 text-center">Volume de Retestes Executados (Jan a Ago/2026)</h3>
+                    <div class="relative h-64 w-full">
+                        <canvas id="monthlyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: OPORTUNIDADE (SIMULAÇÃO) -->
+        <section>
+            <div class="mb-4 border-b-2 border-brand-orange/30 pb-2">
+                <h2 class="text-xl font-bold text-brand-orange uppercase flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-trend-down"></i> Ganhos de Otimização
+                    <span class="text-sm font-normal text-slate-500 normal-case ml-2 text-slate-500">(Simulação com aprovação de 1,500 mg/L)</span>
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Highlight Card 1 -->
+                <div class="card bg-brand-cardbg rounded-xl border-t-4 border-brand-orange p-6 shadow-md relative overflow-hidden group">
+                    <div class="absolute -right-4 -top-4 w-16 h-16 rounded-full bg-brand-orange/10 group-hover:scale-150 transition-transform duration-500"></div>
+                    <p class="text-xs font-bold text-slate-400 uppercase mb-1 relative z-10">Total de Retestes Evitados</p>
+                    <h3 class="text-4xl font-black text-brand-orange relative z-10">421 <span class="text-lg font-bold text-slate-500">Testes</span></h3>
+                    <div class="mt-3 inline-block px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-md relative z-10">
+                        <i class="fa-solid fa-arrow-down mr-1"></i> Redução de 80,6%
+                    </div>
+                </div>
+
+                <!-- Highlight Card 2 -->
+                <div class="card bg-brand-cardbg rounded-xl border-t-4 border-brand-dark p-6 shadow-md relative overflow-hidden group">
+                    <div class="absolute -right-4 -top-4 w-16 h-16 rounded-full bg-brand-dark/5 group-hover:scale-150 transition-transform duration-500"></div>
+                    <p class="text-xs font-bold text-slate-400 uppercase mb-1 relative z-10">Tempo Operacional Poupado</p>
+                    <h3 class="text-4xl font-black text-brand-dark relative z-10">140,3 <span class="text-lg font-bold text-slate-500">Horas</span></h3>
+                    <p class="text-xs font-medium text-slate-500 mt-3 relative z-10">Horas-Homem (HH) recuperadas</p>
+                </div>
+
+                <!-- Highlight Card 3 -->
+                <div class="card bg-brand-cardbg rounded-xl border-t-4 border-brand-teal p-6 shadow-md relative overflow-hidden group">
+                    <div class="absolute -right-4 -top-4 w-16 h-16 rounded-full bg-brand-teal/10 group-hover:scale-150 transition-transform duration-500"></div>
+                    <p class="text-xs font-bold text-slate-400 uppercase mb-1 relative z-10">Economia Financeira</p>
+                    <h3 class="text-4xl font-black text-brand-teal relative z-10">R$ 4.821<span class="text-xl">,69</span></h3>
+                    <p class="text-xs font-medium text-slate-500 mt-3 relative z-10">Custo direto de solvente salvo</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: RANKINGS TOP 5 -->
+        <section>
+            <div class="mb-4 border-b-2 border-slate-200 pb-2">
+                <h2 class="text-xl font-bold text-brand-dark uppercase flex items-center gap-2">
+                    <i class="fa-solid fa-ranking-star text-brand-orange"></i> Top 5 Retestes
+                    <span class="text-sm font-normal text-slate-500 normal-case ml-2">(Sob a meta anterior)</span>
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Plataformas Ranking -->
+                <div class="bg-brand-cardbg rounded-xl shadow-sm border border-slate-200 p-6">
+                    <h3 class="text-sm font-bold text-slate-400 uppercase mb-5">Por Plataforma</h3>
+                    <div class="space-y-5">
+                        <!-- Bar 1 -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-bold text-slate-700">1. P71</span>
+                                <span class="font-bold text-brand-dark">84 retestes</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-brand-dark h-full rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <!-- Bar 2 -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-bold text-slate-700">2. P67 (R)</span>
+                                <span class="font-bold text-brand-dark/80">77 retestes</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-brand-dark/80 h-full rounded-full" style="width: 91%"></div>
+                            </div>
+                        </div>
+                        <!-- Bar 3 -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-bold text-slate-700">3. P69</span>
+                                <span class="font-bold text-brand-dark/60">39 retestes</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-brand-dark/60 h-full rounded-full" style="width: 46%"></div>
+                            </div>
+                        </div>
+                        <!-- Bar 4 -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-bold text-slate-700">4. P52</span>
+                                <span class="font-bold text-brand-dark/50">37 retestes</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-brand-dark/50 h-full rounded-full" style="width: 44%"></div>
+                            </div>
+                        </div>
+                        <!-- Bar 5 -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-bold text-slate-700">5. PMXL</span>
+                                <span class="font-bold text-brand-dark/40">36 retestes</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-brand-dark/40 h-full rounded-full" style="width: 42%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Equipamentos Ranking -->
+                <div class="bg-brand-cardbg rounded-xl shadow-sm border border-slate-200 p-6">
+                    <h3 class="text-sm font-bold text-slate-400 uppercase mb-5">Por Analisador (Equipamento)</h3>
+                    <div class="space-y-5">
+                        <!-- Bar 1 -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-bold text-slate-700">1. ANALIS0191 (P-71)</span>
+                                <span class="font-bold text-brand-orange">84 retestes</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-brand-orange h-full rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <!-- Bar 2 -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-bold text-slate-700">2. ANALIS0157 (P-67R)</span>
+                                <span class="font-bold text-orange-400">39 retestes</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-orange-500/80 h-full rounded-full" style="width: 46%"></div>
+                            </div>
+                        </div>
+                        <!-- Bar 3 -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-bold text-slate-700">3. ANALIS0133 (P-69)</span>
+                                <span class="font-bold text-orange-400">39 retestes</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-orange-500/70 h-full rounded-full" style="width: 46%"></div>
+                            </div>
+                        </div>
+                        <!-- Bar 4 -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-bold text-slate-700">4. ANALIS0111 (P-67R)</span>
+                                <span class="font-bold text-orange-400">38 retestes</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-orange-400/70 h-full rounded-full" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        <!-- Bar 5 -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-bold text-slate-700">5. ANALIS0190 (P-53)</span>
+                                <span class="font-bold text-orange-300">35 retestes</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-orange-300 h-full rounded-full" style="width: 41%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- Rodapé corporativo -->
+        <footer class="flex justify-between items-center text-xs text-slate-400 py-6 mt-4 border-t border-slate-200">
+            <div>
+                <strong>GT Química / GRVE</strong><br>
+                Responsável Técnico: Moisés Oliveira dos Anjos
+            </div>
+            <div class="text-right">
+                <i class="fa-solid fa-phone text-brand-teal"></i> (22) 3323-9121<br>
+                <i class="fa-solid fa-globe text-brand-teal"></i> gtquimica.com.br
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Inicialização do Gráfico Chart.js -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const ctx = document.getElementById('monthlyChart').getContext('2d');
+            
+            // Plugin customizado para desenhar o valor acima das barras
+            const topLabelsPlugin = {
+                id: 'topLabels',
+                afterDatasetsDraw(chart, args, pluginOptions) {
+                    const { ctx, data } = chart;
+                    ctx.save();
+                    chart.getDatasetMeta(0).data.forEach((datapoint, index) => {
+                        const value = data.datasets[0].data[index];
+                        ctx.font = 'bold 13px Roboto';
+                        ctx.fillStyle = '#1b4a6b'; // GT Dark Blue
+                        ctx.textAlign = 'center';
+                        ctx.fillText(value, datapoint.x, datapoint.y - 10);
+                    });
+                    ctx.restore();
+                }
+            };
+
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO'],
+                    datasets: [{
+                        label: 'Retestes Executados',
+                        data: [60, 54, 61, 63, 78, 76, 64, 66],
+                        backgroundColor: '#f06c22',
+                        borderColor: '#d85c17',
+                        borderWidth: 1,
+                        borderRadius: 3,
+                        hoverBackgroundColor: '#4cb3b6' // Teal GT no Hover
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: { top: 25 } },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(27, 74, 107, 0.9)', // Azul GT
+                            titleFont: { family: 'Roboto' },
+                            bodyFont: { family: 'Roboto', size: 14, weight: 'bold' },
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + ' Testes Realizados';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 90, 
+                            grid: {
+                                color: '#f1f5f9',
+                                drawBorder: false,
+                            },
+                            ticks: {
+                                stepSize: 20,
+                                font: { family: 'Roboto', color: '#94a3b8' }
+                            }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: {
+                                font: { family: 'Roboto', weight: 'bold', color: '#64748b' }
+                            }
+                        }
+                    }
+                },
+                plugins: [topLabelsPlugin]
+            });
+        });
+    </script>
+</body>
+</html>
