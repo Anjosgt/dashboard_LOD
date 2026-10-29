@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>P-31 | Recuperação ANALIS0173</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+rel="stylesheet">
+
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+sans: ['Roboto', 'sans-serif'],
+},
+colors: {
+brand: {
+dark: '#1b4a6b',
+orange: '#f06c22',
+teal: '#16a34a',
+card: '#ffffff',
+bg: '#f4f7f9'
+}
+}
+}
+}
+}
+</script>
+
+<style>
+
+body{
+background:#f4f7f9;
+}
+
+.card{
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-3px);
+}
+
+</style>
+
+</head>
+
+<body class="font-sans">
+
+<!-- HEADER -->
+
+<header class="bg-brand-dark text-white border-b-4 border-brand-orange">
+
+<div class="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center">
+
+<div class="flex items-center gap-4">
+
+<img src="logo_gt.png"
+class="h-20 object-contain">
+
+<div>
+
+<h1 class="text-2xl font-bold">
+RELATÓRIO TÉCNICO DE RECUPERAÇÃO
+</h1>
+
+<p class="text-white/80 uppercase text-xs tracking-widest">
+ANALIS0173ECO12119750 | P-31
+</p>
+
+</div>
+
+</div>
+
+<div class="mt-4 md:mt-0">
+
+<div class="bg-green-500 px-4 py-2 rounded-full font-bold">
+OPERACIONAL
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- CONTEUDO -->
+
+<div class="max-w-7xl mx-auto px-6 py-8">
+
+<!-- ECONOMIA -->
+
+<div class="bg-green-50 border-l-8 border-green-600 rounded-xl p-8 shadow mb-8">
+
+<p class="uppercase text-green-700 font-bold text-sm">
+Custo Evitado
+</p>
+
+<h1 class="text-6xl font-black text-green-600">
+R$ 12.236,69
+</h1>
+
+<p class="mt-3 text-green-800">
+
+Recuperação interna realizada pelo Setor ERACHECK,
+evitando contratação de manutenção terceirizada.
+
+</p>
+
+</div>
+
+<!-- KPIS -->
+
+<div class="grid md:grid-cols-4 gap-5 mb-8">
+
+<div class="card bg-white rounded-xl shadow p-6">
+
+<p class="text-slate-400 text-sm uppercase">
+Plataforma
+</p>
+
+<h2 class="text-3xl font-black text-brand-dark">
+P-31
+</h2>
+
+</div>
+
+<div class="card bg-white rounded-xl shadow p-6">
+
+<p class="text-slate-400 text-sm uppercase">
+Equipamento
+</p>
+
+<h2 class="text-lg font-black text-brand-dark">
+ANALIS0173
+</h2>
+
+</div>
+
+<div class="card bg-white rounded-xl shadow p-6">
+
+<p class="text-slate-400 text-sm uppercase">
+Período
+</p>
+
+<h2 class="text-xl font-black text-brand-dark">
+17-19 OUT
+</h2>
+
+</div>
+
+<div class="card bg-white rounded-xl shadow p-6">
+
+<p class="text-slate-400 text-sm uppercase">
+Status
+</p>
+
+<h2 class="text-2xl font-black text-green-600">
+100%
+</h2>
+
+</div>
+
+</div>
+
+<!-- GRÁFICO -->
+
+<div class="bg-white rounded-xl shadow p-8 mb-8">
+
+<h2 class="text-xl font-bold text-brand-dark mb-4">
+
+Distribuição dos Custos Evitados
+
+</h2>
+
+<div style="height:350px">
+
+<canvas id="custos"></canvas>
+
+</div>
+
+</div>
+
+<!-- FALHAS -->
+
+<div class="grid md:grid-cols-2 gap-6 mb-8">
+
+<div class="bg-white rounded-xl shadow p-6">
+
+<h2 class="font-bold text-red-600 text-xl mb-4">
+
+Falhas Identificadas
+
+</h2>
+
+<ul class="space-y-3">
+
+<li>❌ RTC Reset Detected</li>
+
+<li>❌ Bateria BIOS esgotada</li>
+
+<li>❌ Capa da bomba quebrada</li>
+
+<li>❌ Ventoinha desalinhada</li>
+
+<li>❌ Mangueira interna rompida</li>
+
+</ul>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6">
+
+<h2 class="font-bold text-green-600 text-xl mb-4">
+
+Ações Corretivas
+
+</h2>
+
+<ul class="space-y-3">
+
+<li>✅ Troca da bateria BIOS</li>
+
+<li>✅ Troca da capa da bomba</li>
+
+<li>✅ Troca da mangueira</li>
+
+<li>✅ Limpeza com álcool isopropílico</li>
+
+<li>✅ Testes ISAM / IREF / IQT</li>
+
+<li>✅ Validação operacional</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- GALERIA -->
+
+<div class="bg-white rounded-xl shadow p-8 mb-8">
+
+<h2 class="text-xl font-bold text-brand-dark mb-6">
+
+Evidências Fotográficas
+
+</h2>
+
+<div class="grid md:grid-cols-3 gap-6">
+
+<div>
+
+<img src="rtc JPEG.jpeg"
+class="rounded-xl shadow">
+
+<p class="text-center text-sm mt-3">
+Falha RTC Reset Detected
+</p>
+
+</div>
+
+<div>
+
+<img src="capa_bomba JPEG.jpeg"
+class="rounded-xl shadow">
+
+<p class="text-center text-sm mt-3">
+Capa da bomba fraturada
+</p>
+
+</div>
+
+<div>
+
+<img src="mangueira JPEG.jpeg"
+class="rounded-xl shadow">
+
+<p class="text-center text-sm mt-3">
+Mangueira rompida
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- TIMELINE -->
+
+<div class="bg-white rounded-xl shadow p-8 mb-8">
+
+<h2 class="text-xl font-bold text-brand-dark mb-6">
+
+Linha do Tempo
+
+</h2>
+
+<div class="grid md:grid-cols-5 gap-4 text-center">
+
+<div>
+<h3 class="font-bold text-brand-orange">17/10</h3>
+<p>Falha Identificada</p>
+</div>
+
+<div>
+<h3 class="font-bold text-brand-orange">17/10</h3>
+<p>Diagnóstico</p>
+</div>
+
+<div>
+<h3 class="font-bold text-brand-orange">18/10</h3>
+<p>Recebimento em Base</p>
+</div>
+
+<div>
+<h3 class="font-bold text-brand-orange">19/10</h3>
+<p>Reparo</p>
+</div>
+
+<div>
+<h3 class="font-bold text-green-600">19/10</h3>
+<p>Operacional</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- RODAPE -->
+
+<footer class="text-center text-slate-500 py-6">
+
+GT Química | Responsável Técnico: Moisés Oliveira dos Anjos (GRVE)
+
+</footer>
+
+</div>
+
+<script>
+
+new Chart(
+document.getElementById('custos'),
+{
+type:'doughnut',
+
+data:{
+labels:[
+'Peças - R$ 8.836,69',
+'Mão de Obra - R$ 3.400,00'
+],
+
+datasets:[{
+data:[
+8836.69,
+3400
+],
+
+backgroundColor:[
+'#f06c22',
+'#16a34a'
+],
+
+borderColor:'#ffffff',
+borderWidth:3
+}]
+},
+
+options:{
+responsive:true,
+maintainAspectRatio:false,
+
+plugins:{
+legend:{
+position:'top'
+},
+
+tooltip:{
+callbacks:{
+label:function(context){
+
+return context.label;
+
+}
+}
+}
+}
+}
+
+});
+
+</script>
+
+</body>
+
+</html>
